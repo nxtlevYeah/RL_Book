@@ -19,7 +19,7 @@
 Python 3.9 버전의 가상 환경을 만든다. 
 예를 들어, 다음과 같은 conda 명령어로 'RL_Book' 가상환경을 만들어 보자.
 ```bash
-$conda create -n RL_Book python=3.9
+conda create -n RL_Book python=3.9
 ```
 
 #### 2-2. PyTorch 설치
@@ -28,12 +28,12 @@ $conda create -n RL_Book python=3.9
 이를 활용하여 PyTorch를 설치해보자.
 ##### CPU 버전
 ```bash
-$ pip3 install torch torchvision torchaudio
+pip3 install torch torchvision torchaudio
 ```
 ##### GPU 버전
 다음 명령어는 CUDA 11.8 버전 상에서 PyTorch GPU 버전을 설치하는 예시이다.
 ```bash
-$ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
    * GPU 버전을 설치할 때는 CUDA 툴킷과 cuDNN이 설치되어 있어야 하므로 [CUDA](https://developer.nvidia.com/cuda-downloads)와 [cuDNN](https://developer.nvidia.com/rdp/cudnn-archive)에서 download 받아서 설치하라.
 
@@ -41,27 +41,27 @@ $ pip3 install torch torchvision torchaudio --index-url https://download.pytorch
 requirement.txt을 이용해서 파이썬 패키지를 일괄로 설치한다.
 
 ```bash
-$ pip3 install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 #### 2-4. 개발 환경 설치 점검
 강화학습 프레임워크를 개발하기 위한 환경이 정상적으로 구성됐는지 확인해 보자! 
 
 ##### OpenGym 설치 확인
 ```bash
-$ python run_gym.py --env LunarLanderContinuous-v2 --steps 1000
+python run_gym.py --env LunarLanderContinuous-v2 --steps 1000
 ```
    * --env: OpenGym 환경 이름 
    * --steps: 환경과의 상호작용 횟수
 
 ##### 강화학습 프레임워크 설치 확인
 ```bash
-$ python main.py
+python main.py
 ```
 
 ## 3. 강화학습 알고리즘 실행 방법
  
 ```bash
-$ python main.py --agent ppo --env CartPole-v1
+python main.py --agent ppo --env CartPole-v1
 ```
   * --agent: 에이전트 이름 {reinforce, reinforce_b, a2c, dqn, ddqn, ppo}
   * --env: 환경 이름 {CartPole-v1, LunarLanderContinuous-v2}
