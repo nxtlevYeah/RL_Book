@@ -42,7 +42,7 @@ if __name__ == '__main__':
                              'ppo, '
                              '}',
                         type=str,
-                        default='ppo')
+                        default='reinforce')
 
     # 3. 환경 이름 인자 추가
     parser.add_argument('-e',
@@ -53,7 +53,7 @@ if __name__ == '__main__':
                              'Acrobot-v1, '
                              'AntBulletEnv-v0}',
                         type=str,
-                        default='LunarLanderContinuous-v2')
+                        default='CartPole-v1')
 
     # 4. 명령어 인자 파싱
     args = parser.parse_args()
