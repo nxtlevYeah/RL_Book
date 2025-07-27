@@ -1,6 +1,6 @@
 pyyaml==6.0.1
-gym==0.21.0
-gym[Box2D]==0.21.0
+gym==0.22.0
+gym[Box2D]==0.22.0
 pybullet==3.2.6
 pyglet==1.5.27
 tensorboard==2.6.0
