@@ -78,7 +78,7 @@ class RolloutBuffer(Buffer):
             new_data[k] = v[slices]
 
         # 4. 새로운 버퍼 모양 계산
-        buffer_shape = [self._get_num_items(slices[0], self.buffer_size)]
+        buffer_shape = [self._get_num_items(slices, self.buffer_size)]
 
         # 5. 버퍼 객체 생성 및 반환
         return type(self)(config=self.config,
