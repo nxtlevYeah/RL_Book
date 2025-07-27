@@ -49,7 +49,7 @@ if __name__ == '__main__':
                         '--env',
                         help='run type {'
                              'CartPole-v1, '
-                             'LunarLanderContinuous-v2'
+                             'LunarLanderContinuous-v2, '
                              'Acrobot-v1, '
                              'AntBulletEnv-v0}',
                         type=str,
