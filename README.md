@@ -53,12 +53,7 @@ python run_gym.py --env LunarLanderContinuous-v2 --steps 1000
    * --env: OpenGym 환경 이름 
    * --steps: 환경과의 상호작용 횟수
 
-##### 강화학습 프레임워크 설치 확인
-```bash
-python main.py
-```
-
-## 3. 강화학습 알고리즘 실행 방법
+##### 강화학습 프레임워크 실행 방법
  
 ```bash
 python main.py --agent ppo --env CartPole-v1
@@ -68,11 +63,11 @@ python main.py --agent ppo --env CartPole-v1
 
 세부적인 설정 항목은 [여기](config/agents/README.md)를 참고하세요.
 
-## 4. 라이선스
+## 3. 라이선스
 이 저장소의 소스 코드는 [GPL 3.0 라이선스](LICENSE)를 따릅니다.
 상업용과 비상업용으로 자유롭게 이용하으며, 사용 시 출처를 밝히고 소스를 공개해야 할 의무가 있다는 점을 말씀드립니다.
 
-## 5. 자주 묻는 질문
+## 4. 자주 묻는 질문
 
 **1) 파이썬은 어떤 버전을 사용해야 하나요?**
 
