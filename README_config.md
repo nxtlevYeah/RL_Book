@@ -1,73 +1,8 @@
 # 파이토치로 완성하는 실전 강화학습
-**본 저장소는 [파이토치로 완성하는 실전 강화학습] 책에서 설명하는 강화학습 프레임워크와 강화학습 알고리즘의 소스 코드를 제공하고 있습니다.**
 
-<img src="img/chapters.png" alt="cover" width="500"/>
 
-## 1. 디렉토리 구성
-|디렉토리              |설명                        |
-|:--        |:--                          |
-| agents 	| REINFORCE, A2C, DQN, DDQN, PPO 에이전트 관련 클래스 정의 |
-| config	| 에이전트 실행을 위한 설정 파일 |
-| datasets	| 데이터셋 클래스 정의 |
-| envs	    | 환경 클래스 정의 |
-| models	| 정책과 가치 함수 모델 정의 |
-| runner	| 에이전트 실행을 위한 러너와 환경 루프 클래스 정의 |
-| utils	    | 다양한 유틸리티 함수 정의 |
-
-##  2. 개발 환경 설치
-#### 2-1. 가상 환경 구성
-Python 3.9 버전의 가상 환경을 만든다. 
-예를 들어, 다음과 같은 conda 명령어로 'RL_Book' 가상환경을 만들어 보자.
-```bash
-conda create -n RL_Book python=3.9
-```
-
-#### 2-2. PyTorch 설치
-[PyTorch 홈페이지](https://pytorch.org/get-started/locally/)에 가면 
-로컬 환경에 맞게 PyTorch 설치 명령어를 생성해 주는 기능이 제공되고 있으니 
-이를 활용하여 PyTorch를 설치해보자.
-##### CPU 버전
-```bash
-pip3 install torch torchvision torchaudio
-```
-##### GPU 버전
-다음 명령어는 CUDA 11.8 버전 상에서 PyTorch GPU 버전을 설치하는 예시이다.
-```bash
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-```
-   * GPU 버전을 설치할 때는 CUDA 툴킷과 cuDNN이 설치되어 있어야 하므로 [CUDA](https://developer.nvidia.com/cuda-downloads)와 [cuDNN](https://developer.nvidia.com/rdp/cudnn-archive)에서 download 받아서 설치하라.
-
-#### 2-3. 파이썬 패키지 설치
-requirement.txt을 이용해서 파이썬 패키지를 일괄로 설치한다.
-
-```bash
-pip3 install -r requirements.txt
-```
-#### 2-4. 개발 환경 설치 점검
-강화학습 프레임워크를 개발하기 위한 환경이 정상적으로 구성됐는지 확인해 보자! 
-
-##### OpenGym 설치 확인
-```bash
-python run_gym.py --env LunarLanderContinuous-v2 --steps 1000
-```
-   * --env: OpenGym 환경 이름 
-   * --steps: 환경과의 상호작용 횟수
-
-##### 강화학습 프레임워크 설치 확인
-```bash
-python main.py
-```
-
-## 3. 강화학습 알고리즘 실행 방법
- 
-```bash
-python main.py --agent ppo --env CartPole-v1
-```
-  * --agent: 에이전트 이름 {reinforce, reinforce_b, a2c, dqn, ddqn, ppo}
-  * --env: 환경 이름 {CartPole-v1, LunarLanderContinuous-v2}
-
-## 4. 설정 항목 
-### 공통 설정 항목
+## 설정 항목 
+### 1. 공통 설정 항목
 ##### GPU
   * **use_cuda**: True
     * GPU 사용 여부
@@ -138,7 +73,7 @@ python main.py --agent ppo --env CartPole-v1
     * 학습 과정의 산출물을 저장하기 위한 디렉토리의 이름
     * 텐서보드 로그이나 체크포인트를 저장하기 위한 용도로 강화학습 프레임워크의 실행 디렉토리 하위에 생성된다.
 
-### 학습과 관련된 설정 항목 (성능 튜닝의 대상)
+### 2. 학습과 관련된 설정 항목 (성능 튜닝의 대상)
 ##### 실행 모드
   * **training_mode** : True
     * 학습 모드인 경우 True로 추론 모드인 경우 False로 설정
