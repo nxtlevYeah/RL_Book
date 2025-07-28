@@ -253,3 +253,12 @@ python main.py --agent ppo --env CartPole-v1
   * torch 2.7.1
   * torchvision 0.22.1
   * torchaudio 2.7.1
+
+**실행을 헀는데 책에 있는 그래프와 같은 성능이 나오지 않아요**
+
+main.py에서 패키지의 난수 발생기의 씨드를 랜덤하게 초기화하기 떄문에 실행할 때마다 결과가 달라질 수 있습니다.
+여러 번 실행해 보면서 성능이 좋게 나오는지 확인해 보시고 조금 더 성능을 높이고 싶다면 튜닝을 해보시면 됩니다. 
+
+가장 잘 나오는 실행 결과를 재현하고 싶다면 콘솔에 출력된 씨드값(random_seed)으로 
+main.py의 씨드를 고정하고 실행중인 config 파일에 torch_deterministic를 True 지정해 주시면 됩니다.
+
