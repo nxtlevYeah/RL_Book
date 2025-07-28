@@ -80,7 +80,9 @@ GPL 3.0 라이선스는 상업용과 비상업용으로 자유롭게 이용하�
   * torch 2.7.1
   * torchvision 0.22.1
   * torchaudio 2.7.1
-
+```bash
+pip3 install torch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/cu118
+```
 **3) 실행을 헀는데 책에 있는 그래프와 같은 모양으로 성능이 나오지 않아요.**
 
 main.py에서 패키지의 난수 발생기의 씨드를 랜덤하게 초기화하기 떄문에 실행할 때마다 결과가 달라질 수 있습니다.
@@ -90,6 +92,6 @@ main.py에서 패키지의 난수 발생기의 씨드를 랜덤하게 초기화�
 **4) 가장 잘 나오는 실행 결과를 재현하고 싶어요.**
 
 다음과 같이 코드와 설정을 수정하면 재현할 수 있습니다.
-* main.py에서 패키지의 난수 발생기의 씨드를 콘솔에 출력된 씨드값(random_seed)으로 초기화
-* 설정 파일에 torch_deterministic를 True 지정
+* main.py에서 패키지의 난수 발생기의 씨드를 콘솔에 출력된 씨드값(random_seed)으로 초기화합니다.
+* 설정 파일에 torch_deterministic를 True 지정합니다.
 
