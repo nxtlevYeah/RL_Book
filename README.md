@@ -66,7 +66,7 @@ python main.py --agent ppo --env CartPole-v1
   * --agent: 에이전트 이름 {reinforce, reinforce_b, a2c, dqn, ddqn, ppo}
   * --env: 환경 이름 {CartPole-v1, LunarLanderContinuous-v2}
 
-세부적인 설정 항목은 [여기](config/agent/README.md)를 참고하세요.
+세부적인 설정 항목은 [여기](config/agents/README.md)를 참고하세요.
 
 ## 4. 라이선스
 이 저장소의 소스 코드는 [GPL 3.0 라이선스](LICENSE)를 따릅니다.
