@@ -83,7 +83,7 @@ class CosineLR(LRScheduler):
         #   1) 시작 타입 스텝에 도달하지 않은 경우
         #   2) 시간 간격에 도달하지 않은 경우
         if current_timestep < self.start_timesteps or \
-                (current_timestep - self.last_timestep) >= self.interval:
+                (current_timestep - self.last_timestep) < self.interval:
             return
 
         # 2. [시작 타입 스텝, 종료 타입 스텝] 구간에서 현재 타입 스텝의 위치를 비율로 계산

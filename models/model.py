@@ -173,6 +173,7 @@ class CategoricalPolicy(StochasticPolicy):
 class GaussianPolicy(StochasticPolicy):
     """가우시안 분포를 출력하는 정책."""
 
+
     def distribution(self, state):
         """
             가우시안 분포의 (평균, 로그 표준편차)를 Normal로 변환해서 반환
@@ -185,9 +186,10 @@ class GaussianPolicy(StochasticPolicy):
 
         # 1. 정책 실행
         mean, log_std = self(state)
+        log_std = torch.clamp(log_std, min=-20, max=2)  # log_std 안정화
 
         # 2. 표준 편차 계산
-        std = log_std.exp() + self.config.epsilon
+        std = log_std.exp()
         action_std = torch.ones_like(mean) * std
 
         # 3. 가우시안 분포 생성
