@@ -62,7 +62,7 @@ warmup_step: 0
 epsilon_greedy: False
 
 # Gradient Clipping
-grad_norm_clip: 0.5 # Reduce magnitude of gradients above this L2 norm
+grad_norm_clip: 0.45 # Reduce magnitude of gradients above this L2 norm
 
 # PPO Clipping
 ppo_clipping_epsilon: 0.1          # clip parameter for PPO
