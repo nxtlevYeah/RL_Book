@@ -3,6 +3,7 @@
 
 <img src="img/cover.jpg" alt="cover" width="700"/>
 
+* [YES24](https://www.yes24.com/product/goods/151359723) |  [교보문고](https://product.kyobobook.co.kr/detail/S000217304442) | [알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=369915991)
 
 ## 1. 디렉토리 구성
 |디렉토리              |설명                        |
