@@ -1,4 +1,4 @@
-# 파이토치로 완성하는 실전 강화학습
+-# 파이토치로 완성하는 실전 강화학습
 **본 저장소는 [파이토치로 완성하는 실전 강화학습] 책에서 설명하는 강화학습 프레임워크와 강화학습 알고리즘의 소스 코드를 제공하고 있습니다.**
 
 <img src="img/cover.jpg" alt="cover" width="700"/>
@@ -17,45 +17,65 @@
 | utils	    | 다양한 유틸리티 함수 정의 |
 
 ##  2. 개발 환경 설치
-#### 2-1. 가상 환경 구성
+### 2.1 가상 환경 구성
 Python 3.9 버전의 가상 환경을 만든다. 
 예를 들어, 다음과 같은 conda 명령어로 'RL_Book' 가상환경을 만들어 보자.
 ```bash
 conda create -n RL_Book python=3.9
 ```
 
-#### 2-2. PyTorch 설치
+### 2.2 PyTorch 설치
 [PyTorch 홈페이지](https://pytorch.org/get-started/locally/)에 가면 
 로컬 환경에 맞게 PyTorch 설치 명령어를 생성해 주는 기능이 제공되고 있으니 
 이를 활용하여 PyTorch를 설치해보자.
-##### CPU 버전
+#### 2.2.1 CPU 버전
 ```bash
 pip3 install torch torchvision torchaudio
 ```
-##### GPU 버전
+#### 2.2.2 GPU 버전
 다음 명령어는 CUDA 11.8 버전 상에서 PyTorch GPU 버전을 설치하는 예시이다.
 ```bash
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
    * GPU 버전을 설치할 때는 CUDA 툴킷과 cuDNN이 설치되어 있어야 하므로 [CUDA](https://developer.nvidia.com/cuda-downloads)와 [cuDNN](https://developer.nvidia.com/rdp/cudnn-archive)에서 download 받아서 설치하라.
 
-#### 2-3. 파이썬 패키지 설치
+### 2.3 파이썬 패키지 설치
+#### 2.3.1 Linux, MacOS 설치
 requirement.txt을 이용해서 파이썬 패키지를 일괄로 설치한다.
-
 ```bash
 pip3 install -r requirements.txt
 ```
-#### 2-4. 개발 환경 설치 점검
+
+#### 2.3.2 Windows 설치
+Windows의 경우 다음과 같이 두 단계로 파이썬 패키지를 설치한다.
+
+**1. conda로 pybullet 설치**
+```bash
+conda install -c conda-forge pybullet=3.25
+```
+**2. 나머지 패키지는 pip로 설치**
+```bash
+pip3 install -r requirements_windows.txt
+```
+* PyPl에는 Python 3.9 + Windows용 pybullet이나 box2d-py의 사전 빌드 wheel을 제공하지 않음
+  * 따라서, pip로 설치할 때 자동 소스 빌드를 하며,
+  * 이때, Microsoft Visual C++ 14 이상 + CMake/빌드 환경과 SWIG이 필요하다.
+* 설치를 간단히 하려면 다음과 같이 우회된 방법으로 wheel 설치를 할 수 있다.  
+  * pybullet: conda-forge 채널의 Windows용 pybullet wheel로 설치
+  * box2d-py: box2d-py 대신 Box2D (2.3.10) 패키지의 wheel로 설치
+
+
+### 2.4 개발 환경 설치 점검
 강화학습 프레임워크를 개발하기 위한 환경이 정상적으로 구성됐는지 확인해 보자! 
 
-##### OpenGym 설치 확인
+#### OpenGym 설치 확인
 ```bash
 python run_gym.py --env LunarLanderContinuous-v2 --steps 1000
 ```
    * --env: OpenGym 환경 이름 
    * --steps: 환경과의 상호작용 횟수
 
-##### 강화학습 프레임워크 실행 방법
+#### 강화학습 프레임워크 실행 방법
  
 ```bash
 python main.py --agent ppo --env CartPole-v1
