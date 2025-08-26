@@ -1,11 +1,19 @@
--# 파이토치로 완성하는 실전 강화학습
+# 파이토치로 완성하는 실전 강화학습
 **본 저장소는 [파이토치로 완성하는 실전 강화학습] 책에서 설명하는 강화학습 프레임워크와 강화학습 알고리즘의 소스 코드를 제공하고 있습니다.**
 
-<img src="img/cover.jpg" alt="cover" width="700"/>
+<img src="img/cover.jpg" alt="cover" width="500"/>
+
 
 * [YES24](https://www.yes24.com/product/goods/151359723) |  [교보문고](https://product.kyobobook.co.kr/detail/S000217304442) | [알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=369915991)
 
-## 1. 디렉토리 구성
+
+
+## 1. 이 책의 구성
+이 책은 다음과 같이 구성되어 있습니다.
+
+<img src="img/back_cover.png" alt="cover" width="500"/>
+
+## 2. 디렉토리 구성
 |디렉토리              |설명                        |
 |:--        |:--                          |
 | agents 	| REINFORCE, A2C, DQN, DDQN, PPO 에이전트 관련 클래스 정의 |
@@ -16,37 +24,37 @@
 | runner	| 에이전트 실행을 위한 러너와 환경 루프 클래스 정의 |
 | utils	    | 다양한 유틸리티 함수 정의 |
 
-##  2. 개발 환경 설치
-### 2.1 가상 환경 구성
+##  3. 개발 환경 설치
+### 3.1 가상 환경 구성
 Python 3.9 버전의 가상 환경을 만든다. 
 예를 들어, 다음과 같은 conda 명령어로 'RL_Book' 가상환경을 만들어 보자.
 ```bash
 conda create -n RL_Book python=3.9
 ```
 
-### 2.2 PyTorch 설치
+### 3.2 PyTorch 설치
 [PyTorch 홈페이지](https://pytorch.org/get-started/locally/)에 가면 
 로컬 환경에 맞게 PyTorch 설치 명령어를 생성해 주는 기능이 제공되고 있으니 
 이를 활용하여 PyTorch를 설치해보자.
-#### 2.2.1 CPU 버전
+#### 3.2.1 CPU 버전
 ```bash
 pip3 install torch torchvision torchaudio
 ```
-#### 2.2.2 GPU 버전
+#### 3.2.2 GPU 버전
 다음 명령어는 CUDA 11.8 버전 상에서 PyTorch GPU 버전을 설치하는 예시이다.
 ```bash
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 ```
    * GPU 버전을 설치할 때는 CUDA 툴킷과 cuDNN이 설치되어 있어야 하므로 [CUDA](https://developer.nvidia.com/cuda-downloads)와 [cuDNN](https://developer.nvidia.com/rdp/cudnn-archive)에서 download 받아서 설치하라.
 
-### 2.3 파이썬 패키지 설치
-#### 2.3.1 Linux, MacOS 설치
+### 3.3 파이썬 패키지 설치
+#### 3.3.1 Linux, MacOS 설치
 requirement.txt을 이용해서 파이썬 패키지를 일괄로 설치한다.
 ```bash
 pip3 install -r requirements.txt
 ```
 
-#### 2.3.2 Windows 설치
+#### 3.3.2 Windows 설치
 Windows의 경우 다음과 같이 두 단계로 파이썬 패키지를 설치한다.
 
 **1. conda로 pybullet 설치**
@@ -65,7 +73,7 @@ pip3 install -r requirements_windows.txt
   * box2d-py: box2d-py 대신 Box2D (2.3.10) 패키지의 wheel로 설치
 
 
-### 2.4 개발 환경 설치 점검
+### 3.4 개발 환경 설치 점검
 강화학습 프레임워크를 개발하기 위한 환경이 정상적으로 구성됐는지 확인해 보자! 
 
 #### OpenGym 설치 확인
@@ -83,13 +91,18 @@ python main.py --agent ppo --env CartPole-v1
   * --agent: 에이전트 이름 {reinforce, reinforce_b, a2c, dqn, ddqn, ppo}
   * --env: 환경 이름 {CartPole-v1, LunarLanderContinuous-v2}
 
-세부적인 설정 항목은 [여기](config/agents/README.md)를 참고하세요.
+## 4. 참고 문서
+설정 항목과 파일 구성 및 클래스 정의는 아래 링크를 참고하세요.
 
-## 3. 라이선스
+* [세부적인 설정 항목](docs/config/README.md)
+* [파일 구성 및 클래스 정의](docs/README.md)
+
+
+## 5. 라이선스
 이 저장소의 소스 코드는 [GPL 3.0 라이선스](LICENSE)를 따릅니다.</br>
 GPL 3.0 라이선스는 상업용과 비상업용으로 자유롭게 이용하으며 사용 시 출처를 밝히고 소스를 공개해야 할 의무가 있습니다.
 
-## 4. 자주 묻는 질문
+## 6. 자주 묻는 질문
 
 **1) 파이썬은 어떤 버전을 사용해야 하나요?**
 
