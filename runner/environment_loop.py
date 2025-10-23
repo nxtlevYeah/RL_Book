@@ -123,6 +123,10 @@ class EnvironmentLoop:
             # 4. 환경과의 상호작용
             next_state, reward, done, env_info  = self.env.step(action)
 
+            # 💡 렌더링 코드
+            if self.config.render:
+                self.env.render()
+
             # 5. 트랜지션 데이터 관측
             # 상호작용 이후 트랜지션 데이터
             post_transition_data = \
