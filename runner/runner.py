@@ -147,23 +147,20 @@ class Runner:
         # 2. 에이전트 생성
         self.make_agent()
 
-        # # 3. 훈련 모드 (Training Mode)
-        # if self.config.training_mode:
-        #     # 체크포인트 복구
-        #     if self.config.checkpoint_path != "" \
-        #             and self.restore() is False: return False
-        #     self.make_environment_loops()           # 환경 루프 생성
-        #     self.train()                            # 학습 (train() 호출)
-        # else:   # 4. 추론 모드 (Inference Mode)
-
-        if self.load() is False: 
-            print("#"*100)
-            print("실패")
-            return False   # 추론 모델 로드
-        print("#"*199)
-        print("성공")
-        self.make_environment_loops()           # 환경 루프 생성
-        self.test()                             # 추론 (test() 호출)
+        # 3. 훈련 모드 (Training Mode)
+        if self.config.training_mode:
+            # 체크포인트 복구
+            if self.config.checkpoint_path != "" \
+                    and self.restore() is False: return False
+            self.make_environment_loops()           # 환경 루프 생성
+            self.train()                            # 학습 (train() 호출)
+        else:   # 4. 추론 모드 (Inference Mode)
+            if self.load() is False:
+                return False   # 추론 모델 로드
+            print("#"*199)
+            print("성공")
+            self.make_environment_loops()           # 환경 루프 생성
+            self.test()                             # 추론 (test() 호출)
 
         return True
 
