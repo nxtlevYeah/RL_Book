@@ -6,7 +6,6 @@ swig
 pyyaml==6.0.1
 gym==0.22.0
 gymnasium[Box2D]
-pybullet==3.2.5
 pyglet==1.5.27
 tensorboard==2.20.0
-protobuf<3.21.0,>=3.20.0p
+protobuf<3.21.0,>=3.20.0
