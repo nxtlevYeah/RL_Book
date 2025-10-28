@@ -26,7 +26,7 @@ def run_gym(env_name, n_steps=100):
     """
 
     # 1. 환경 생성
-    env = gym.make(env_name)
+    env = gym.make(env_name, render_mode="human")
 
     # 2. 행동 공간 및 환경 초기화
     env.action_space.seed(42)
@@ -37,7 +37,9 @@ def run_gym(env_name, n_steps=100):
         # 행동 선택
         action = env.action_space.sample()
         # 행동 실행 및 환경 정보 반환
-        next_state, reward, done, env_info  = env.step(action)
+        next_state, reward, terminated, truncated, env_info = env.step(action)
+        done = terminated or truncated
+
         env.render()
         
         # 4. 환경 리셋
@@ -56,9 +58,9 @@ if __name__ == '__main__':
     # 2. 환경 이름 인자 추가
     parser.add_argument('-e',
                         '--env',
-                        help='run type {CartPole-v1, LunarLanderContinuous-v2}',
+                        help='run type {CartPole-v1, LunarLanderContinuous-v3}',
                         type=str,
-                        default='LunarLanderContinuous-v2')
+                        default='LunarLanderContinuous-v3')
 
     # 3. 환경과의 상호작용 횟수 인자 추가
     parser.add_argument('-s',
