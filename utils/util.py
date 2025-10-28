@@ -38,6 +38,11 @@ def to_torch_type(dtype):
     return torch.float32
 
 
+def to_tensor(value, dtype=None):
+    if isinstance(value, np.ndarray) or isinstance(value, (np.int64, np.float64, int, float)):
+        value = torch.tensor(value, dtype=dtype)
+    return value
+
 def to_device(a_tensor, config):
     """
         텐서의 디바이스를 설정에 지정된 디바이스로 재설정
@@ -48,10 +53,11 @@ def to_device(a_tensor, config):
     Returns:
         디바이스가 재설정된 텐서
     """
+    if not hasattr(a_tensor, "device"):  # 만약 텐서가 아니면
+        a_tensor = torch.tensor(a_tensor)
     if a_tensor.device != config.device:
         a_tensor = a_tensor.to(config.device)
     return a_tensor
-
 
 def to_numpy(a_tensor, config):
     """

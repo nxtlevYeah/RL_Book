@@ -17,7 +17,7 @@ torch_deterministic: False
 
 # Environment
 env_wrapper: 'opengym'
-env_name: 'LunarLanderContinuous-v2'
+env_name: 'LunarLanderContinuous-v3'
 n_envs: 1
 distributed_processing_type: "sync"  # {sync, async}
 

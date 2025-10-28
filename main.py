@@ -49,7 +49,7 @@ if __name__ == '__main__':
                         '--env',
                         help='run type {'
                              'CartPole-v1, '
-                             'LunarLanderContinuous-v2, '
+                             'LunarLanderContinuous-v3, '
                              'Acrobot-v1, '
                              'AntBulletEnv-v0}',
                         type=str,
@@ -64,7 +64,10 @@ if __name__ == '__main__':
     # 6. 난수 발생기를 초기화
     np.random.seed(random_seed)
     torch.manual_seed(random_seed)
+
+    print("!"*30)
     print("random_seed=", random_seed)
+    print("!"*30)
 
     # 7. 에이전트 이름과 환경 이름 받기
     agent_name = args.agent
