@@ -16,7 +16,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """run_gpy.py: OpenGym 환경이 정상적으로 실행되는지 점검하기 위한 프로그램."""
 import argparse
-import gym
+import gymnasium as gym
 
 
 def run_gym(env_name, n_steps=100):

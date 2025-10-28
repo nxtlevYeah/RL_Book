@@ -18,7 +18,7 @@ from types import SimpleNamespace
 from envs.environment import Environment, EnvironmentSpec
 import numpy as np
 from utils.util import scale_bias
-import gym
+import gymnasium as gym
 import pybullet_envs
 
 
@@ -46,9 +46,8 @@ class OpenGym(Environment):
         self.env = gym.make(env_name, **kwargs)
 
         # 3. 환경의 난수 발생기 초기화
-        self.env.seed(random_seed+env_id)
-        self.env.action_space.seed(random_seed+env_id)
-        self.env.observation_space.seed(random_seed+env_id)
+        observation, _ = self.env.reset(seed=random_seed + env_id)
+        
 
         # 4. 연속 행동 여부 설정
         self.b_continuous_action = True
@@ -68,8 +67,8 @@ class OpenGym(Environment):
 
     def reset(self):
         """ 환경 리셋. """
-
-        return self.env.reset()
+        observation, _ = self.env.reset()
+        return observation
 
     def step(self, action):
         """
@@ -90,9 +89,15 @@ class OpenGym(Environment):
             # 3. 이산 행동인 경우 스칼라로 복구
             if isinstance(action, np.ndarray):
                 action = action.item()
-
         # 4. 환경에 대해 행동을 실행
-        return self.env.step(action)
+        ## Gymnasium의 step은 (obs, reward, terminated, truncated, info) 다섯 개의 값을 반환
+        observation, reward, terminated, truncated, info = self.env.step(action)
+        
+        # 'done' 플래그는 terminated(종료 조건 충족) 또는 truncated(시간 제한 등) 둘 중 하나가 True면 True입니다.
+        done = terminated or truncated
+
+        # 5. 이전 Gym 표준 (state, reward, done, info)으로 반환
+        return observation, reward, done, info
 
     def close(self):
         """환경 종료."""
