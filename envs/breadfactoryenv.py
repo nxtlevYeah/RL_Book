@@ -37,7 +37,7 @@ ACTION_DROP = 2
 class BreadFactoryEnv(Environment):
     """
     '빵공장 아르바이트' 게임 로직의 "턴제" 학습용 환경.
-    '신속함'은 배제하고 '정확도'만 학습하는 것을 목표로 함.
+    '정확도'를 학습하는 것을 목표로 함.
     """
 
     def __init__(self, config, env_id, **kwargs):
