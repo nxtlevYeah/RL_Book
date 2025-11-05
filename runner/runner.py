@@ -149,27 +149,29 @@ class Runner:
 
 
         # 3. 훈련 모드 (Training Mode)
-        print("#"*30)
-        print("훈련 모드")
-        print("#"*30)
-        # 체크포인트 복구
-        if self.config.checkpoint_path != "" \
-                and self.restore() is False: return False
-        self.make_environment_loops()           # 환경 루프 생성
-        model_path = self.train()                            # 학습 (train() 호출)
+        if self.config.training_mode:
+            print("#"*30)
+            print("훈련 모드")
+            print("#"*30)
+            # 체크포인트 복구
+            if self.config.checkpoint_path != "" \
+                    and self.restore() is False: return False
+            self.make_environment_loops()           # 환경 루프 생성
+            model_path = self.train()                            # 학습 (train() 호출)
         # 4. 추론 모드 (Inference Mode)로 전환 ( 해줘야 버퍼 에러 안생김 )
-        self.config.training_mode = False
-        if self.load(model_path) is False: 
-            print("#"*30)
-            print("추론 실패")
-            print("#"*30)
-            return False   # 추론 모델 로드
+        else:
+            # self.config.training_mode = False
+            if self.load(model_path) is False: 
+                print("#"*30)
+                print("추론 실패")
+                print("#"*30)
+                return False   # 추론 모델 로드
 
-        print("#"*30)
-        print("추론 모드")
-        print("#"*30)
-        self.make_environment_loops()           # 환경 루프 생성
-        self.test()                             # 추론 (test() 호출)
+            print("#"*30)
+            print("추론 모드")
+            print("#"*30)
+            self.make_environment_loops()           # 환경 루프 생성
+            self.test()                             # 추론 (test() 호출)
     ########### 원본 ###########
     # 훈련 따로 추론 따로
         # # 3. 훈련 모드 (Training Mode)

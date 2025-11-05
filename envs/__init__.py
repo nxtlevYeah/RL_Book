@@ -15,7 +15,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 from envs.opengym import OpenGym
+from envs.breadfactoryenv import BreadFactoryEnv
 
 # 환경 클래스 레지스트리
 REGISTRY = {}
 REGISTRY["opengym"] = OpenGym
+REGISTRY["BFenv"] = BreadFactoryEnv

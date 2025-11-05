@@ -51,7 +51,9 @@ if __name__ == '__main__':
                              'CartPole-v1, '
                              'LunarLanderContinuous-v3, '
                              'Acrobot-v1, '
-                             'AntBulletEnv-v0}',
+                             'AntBulletEnv-v0,'
+                             'BFenv'
+                             '}',
                         type=str,
                         default='CartPole-v1')
 
