@@ -146,35 +146,32 @@ class Runner:
 
         # 2. 에이전트 생성
         self.make_agent()
-
-
+        model_path = ''
         # 3. 훈련 모드 (Training Mode)
-        if self.config.training_mode:
-            print("#"*30)
-            print("훈련 모드")
-            print("#"*30)
-            # 체크포인트 복구
-            if self.config.checkpoint_path != "" \
-                    and self.restore() is False: return False
-            self.make_environment_loops()           # 환경 루프 생성
-            model_path = self.train()                            # 학습 (train() 호출)
+        print("#"*30)
+        print("훈련 모드")
+        print("#"*30)
+        # 체크포인트 복구
+        if self.config.checkpoint_path != "" \
+                and self.restore() is False: return False
+        self.make_environment_loops()           # 환경 루프 생성
+        model_path = self.train()                            # 학습 (train() 호출)
         # 4. 추론 모드 (Inference Mode)로 전환 ( 해줘야 버퍼 에러 안생김 )
-        else:
-            # self.config.training_mode = False
-            if self.load(model_path) is False: 
-                print("#"*30)
-                print("추론 실패")
-                print("#"*30)
-                return False   # 추론 모델 로드
+        self.config.training_mode = False
+        if self.load(model_path) is False: 
+            print("#"*30)
+            print("추론 실패")
+            print("#"*30)
+            return False   # 추론 모델 로드
 
-            print("#"*30)
-            print("추론 모드")
-            print("#"*30)
-            self.make_environment_loops()           # 환경 루프 생성
-            self.test()                             # 추론 (test() 호출)
+        print("#"*30)
+        print("추론 모드")
+        print("#"*30)
+        self.make_environment_loops()           # 환경 루프 생성
+        self.test()                             # 추론 (test() 호출)
     ########### 원본 ###########
     # 훈련 따로 추론 따로
-        # # 3. 훈련 모드 (Training Mode)
+        # 3. 훈련 모드 (Training Mode)
         # if self.config.training_mode:
         #     print("#"*30)
         #     print("훈련 모드")
@@ -185,11 +182,11 @@ class Runner:
         #     self.make_environment_loops()           # 환경 루프 생성
         #     model_path = self.train()                            # 학습 (train() 호출)
         # else:   # 4. 추론 모드 (Inference Mode)
-        #     if self.load(model_path) is False: 
+        #     if self.load(model_path): 
         #         print("#"*30)
         #         print("추론 모드")
         #         print("#"*30)
-        #         return False   # 추론 모델 로드
+        #         # return False   # 추론 모델 로드
         #     self.make_environment_loops()           # 환경 루프 생성
         #     self.test()                             # 추론 (test() 호출)
 
@@ -409,15 +406,17 @@ class Runner:
         Returns:
             모델 로딩 성공 여부
         """
-        print("*"*30)
-        print(model_path)
-        print("*"*30)
-
-        # 추론 모델 경로에서 모델 로딩
-        model_dir = model_path
-        model_file_path = os.path.join(model_dir, "network.th")
-
-        return self.agent.load(model_file_path)
+        if model_path != '':
+            print("*"*30)
+            print(model_path)
+            print("*"*30)
+            # 추론 모델 경로에서 모델 로딩
+            model_dir = model_path
+            model_file_path = os.path.join(model_dir, "network.th")
+            return self.agent.load(model_file_path)
+        else:
+            print(self.config.inference_model_path)
+            return self.agent.load(self.config.inference_model_path)
 
     def save(self, time_step):
         """
