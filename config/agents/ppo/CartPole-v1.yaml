@@ -21,8 +21,8 @@ distributed_processing_type: "sync"  # {sync, async}
 render: True
 
 # Inference
-training_mode : True
-inference_model_path: "/Users/irene/Documents/GitHub/RL_Book/results/models/ppo_CartPole-v1_2025-10-23_23-24-49/100096"
+training_mode : False
+inference_model_path: "/Users/irene/Documents/GitHub/RL_Book/results/models/ppo_CartPole-v1_2025-11-20_15-58-14/100096"
 inference_max_episodes: 100         # maximum number of episodes
 
 # Logging options

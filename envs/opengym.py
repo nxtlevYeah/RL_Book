@@ -42,6 +42,18 @@ class OpenGym(Environment):
         env_name = self.config.env_name
         random_seed = self.config.random_seed
 
+        # 1. 렌더링 모드 결정 (Gymnasium 경고 해결)
+        # 훈련 모드에서는 config.render 설정에 따르고, 추론 모드에서는 기본적으로 렌더링을 가정합니다.
+        # 'rgb_array'는 화면을 띄우지 않고 픽셀 데이터를 반환하는 모드로, 백그라운드 학습에 가장 안전합니다.
+        render_mode = None
+        if self.config.render or not self.config.training_mode:
+            # 렌더링이 필요하거나 (config.render=True) 추론 모드인 경우
+            render_mode = 'human'
+        
+        # 2. kwargs에 render_mode를 추가 (이미 kwargs에 있다면 덮어쓰지 않음)
+        if 'render_mode' not in kwargs and render_mode is not None:
+            kwargs['render_mode'] = render_mode
+
         # 2. 환경 생성
         self.env = gym.make(env_name, **kwargs)
 
